@@ -10,8 +10,8 @@
   <title>sign in</title>
 </head>
 
-<body class="bg-infon mt-5 mb-4" style="background-image: linear-gradient(20deg,#00C1FE,#FAFFC1);">
-  <div class="container col-md-4 py-3 ">
+<body class="bg-info mt-5 mb-4" style="background-image: linear-gradient(20deg,#00C1FE,#FAFFC1);">
+  <div class="container col-md-4 py-3">
     <div class="container border-5 bg-white py-5" style="border-radius: 16px;">
       <h1 class="border-start border-info border-5 ">E-classe</h1>
       <h4 class="text-center">sign in</h4>
