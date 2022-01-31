@@ -101,7 +101,7 @@
                    <?php include 'navbar.php'; ?>
                </nav>
                <!-- <div class="container"> -->
-               <div class="row">
+               <div class="row gap-3">
                    <div class="col">
                        <div class="card" style="width: 14rem;background-color:#F0F9FF;">
 
