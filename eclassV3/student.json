@@ -1,24 +1,9 @@
-[
-    {
-        "Name"  : "mahdi",
-
-        "Email" : "user@gmail.com",
-
-        "Phone" : "068976564",
-
-        "Number": "44445678900987654",
-
-        "Date"  :  "Dec 12, 2022"
-    },
-    {
-        "Name"  : "mahdi",
-
-        "Email" : "user@gmail.com",
-
-        "Phone" : "068976564",
-
-        "Number": "44445678900987654",
-
-        "Date"  :  "Dec 12, 2022"
+{
+    "1": {
+        "stud1": "Mahdi",
+        "stud2": "nainiaa",
+        "stud3": "0777787780",
+        "stud4": "devlopper",
+        "stud5": "10\/02\/1998"
     }
-]
+}

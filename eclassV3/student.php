@@ -35,7 +35,7 @@
                     <div class="tof">
                         <i class="far fa-sort"></i>
                     </div>
-                    <button type="button" class="btn btn-primary">add new student</button>
+                    <a href="add.php" type="button" class="btn btn-primary">add new student</a>
                 </div>
             </div>
             <div class="table-responsive">
@@ -56,24 +56,24 @@
                         <?php //include 'tableau.php';
                         
                         $tab_student = file_get_contents("student.json");
-                        $tab_student = json_decode($tab_student);
+                        $tab_student = json_decode($tab_student,true);
                         
                         
                         ?>
                         
                         
-                        <?php foreach ($tab_student as $END){
+                        <?php foreach ($tab_student as $key => $val){
                             echo  "<tr class=\"bg-white align-middle\">" ?>
                             <td><img src="image/student.jpg" alt="" height="50" width="50"></td>
-                            <td><?php echo $END-> Name; ?></td>
-                            <td><?php echo $END-> Email; ?></td>
-                            <td><?php echo $END-> Phone; ?></td>
-                            <td><?php echo $END-> Number; ?></td>
-                            <td><?php echo $END-> Date; ?></td>
+                            <td><?php echo $val['stud1'] ?></td>
+                            <td><?php echo $val['stud2'] ?></td>
+                            <td><?php echo $val['stud3'] ?></td>
+                            <td><?php echo $val['stud4'] ?></td>
+                            <td><?php echo $val['stud5'] ?></td>
                             
                             <td class="d-md-flex gap-3 mt-3">
-                                <i class="far fa-pen"></i>
-                                <i class="far fa-trash"></i>
+                                <a href="modifier.php?index=<?php echo $key; ?>"><i class="far fa-pen"></i></a>
+                               <a href="delete.php?index=<?php echo $key; ?>"><i class="far fa-trash"></i></a>
                             </td>
                         </tr>
                         

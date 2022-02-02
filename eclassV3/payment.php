@@ -57,7 +57,7 @@
             <tbody>
             
                   <?php    
-                            $tab_paye = file_get_contents("tabl-pay.json");
+                $tab_paye = file_get_contents("tabl-pay.json");
                 $tab_student = json_decode($tab_paye ,true);
                 foreach ($tab_student as $END){
       echo '<tr>
