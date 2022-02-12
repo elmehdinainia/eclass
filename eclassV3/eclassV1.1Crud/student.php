@@ -65,11 +65,11 @@
                         <?php foreach ($tab_student as $key => $val){
                             echo  "<tr class=\"bg-white align-middle\">" ?>
                             <td><img src="image/student.jpg" alt="" height="50" width="50"></td>
-                            <td><?php echo $val['stud1'] ?></td>
-                            <td><?php echo $val['stud2'] ?></td>
-                            <td><?php echo $val['stud3'] ?></td>
-                            <td><?php echo $val['stud4'] ?></td>
-                            <td><?php echo $val['stud5'] ?></td>
+                            <td><?php echo $val['name'] ?></td>
+                            <td><?php echo $val['email'] ?></td>
+                            <td><?php echo $val['phone'] ?></td>
+                            <td><?php echo $val['enrol'] ?></td>
+                            <td><?php echo $val['date'] ?></td>
                             
                             <td class="d-md-flex gap-3 mt-3">
                                 <a href="modifier.php?index=<?php echo $key; ?>"><i class="far fa-pen"></i></a>

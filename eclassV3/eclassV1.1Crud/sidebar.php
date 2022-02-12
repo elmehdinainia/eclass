@@ -48,10 +48,10 @@
                                     class="ms-1 d-none d-sm-inline">Settings</span></a>
                         </li>
 
-                        <li class="position-absolute" style="bottom: 5px;">
+                        <li class="position-absolute" style="bottom: 5px;" >
                             <a href="index.php" class="nav-link mt-sm-5  text-dark">
                                 <span class="me-3 d-none d-sm-inline px-sm-1">Logout</span><i
-                                    class="fal fa-sign-out-alt fs-5 "></i></a>
+                                    class="fal fa-sign-out-alt "></i></a>
                         </li>
                     </ul>
                 </div> 

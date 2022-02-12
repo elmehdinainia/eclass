@@ -1,3 +1,11 @@
+<?php 
+        include 'conect.php';
+        $sql_re ="SELECT * FROM `students`";//$sql_re is a string
+        $sql_obj = mysqli_query( $conn,$sql_re);//sql is a obj, take connection and requete
+        //$sql_assoc = mysqli_fetch_assoc($sql_obj);// mysqli_fetch_assoc this function takes a obj and convert to array associative 
+        //mysqli_num_rows this function return number all the rows
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,10 +20,10 @@
     <title>student</title>
 </head>
 
-<body>
+<body> 
     <div class="container-fluid">
         <div class="row flex-nowrap">
-          
+            
             <?php include 'sidebar.php';?>
         </div>
         <!-- end side bar -->
@@ -52,33 +60,30 @@
                         </tr>
                     </thead>
                     <tbody>
-                    
-                        <?php //include 'tableau.php';
-                        
-                        $tab_student = file_get_contents("student.json");
-                        $tab_student = json_decode($tab_student,true);
-                        
-                        
-                        ?>
-                        
-                        
-                        <?php foreach ($tab_student as $key => $val){
-                            echo  "<tr class=\"bg-white align-middle\">" ?>
+                   
+                   <?php
+                       
+                       while( $row = mysqli_fetch_assoc($sql_obj)){
+                   ?>
+                
+                           <tr class="bg-white align-middle">
                             <td><img src="image/student.jpg" alt="" height="50" width="50"></td>
-                            <td><?php echo $val['stud1'] ?></td>
-                            <td><?php echo $val['stud2'] ?></td>
-                            <td><?php echo $val['stud3'] ?></td>
-                            <td><?php echo $val['stud4'] ?></td>
-                            <td><?php echo $val['stud5'] ?></td>
+                            <td><?php echo $row['name'] ?></td>
+                            <td><?php echo $row['email'] ?></td>
+                            <td><?php echo $row['phone'] ?></td>
+                            <td><?php echo $row['enrol_number'] ?></td>
+                            <td><?php echo $row['date_of_admission'] ?></td>
                             
                             <td class="d-md-flex gap-3 mt-3">
-                                <a href="modifier.php?index=<?php echo $key; ?>"><i class="far fa-pen"></i></a>
-                               <a href="delete.php?index=<?php echo $key; ?>"><i class="far fa-trash"></i></a>
+                                <a href="modifier.php?id=<?php echo $row['id']; ?>"><i class="far fa-pen"></i></a>
+                               <a href="delet.php?id=<?php echo $row['id']; ?>"> <i class="far fa-trash"></i></a>
+                   
                             </td>
                         </tr>
+                       <?php 
+                      }?>
                         
-                        
-                        <?php  }; ?>
+                      
 
                         
                     </tbody>

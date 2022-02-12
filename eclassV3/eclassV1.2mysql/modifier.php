@@ -1,19 +1,38 @@
-<?php
-    //get the index from URL
-    $index = $_GET['index'];
 
-    $data = file_get_contents('student.json');
-    $data = json_decode($data, true);
-
-    $row = $data[$index];
-  
-   
-?>
-
+<?php 
+        include 'conect.php';
+        if(isset($_POST['Update']))
+{       $id = $_POST['id'];
+        $name = $_POST['Nom'];
+        $email = $_POST['Email'];
+        $phone = $_POST['Phone'];
+        $enroll_n = $_POST['Enrol'];
+        $date_a = $_POST['date'];    
+        $result = mysqli_query($conn, "UPDATE students SET name='$name', email='$email', phone='$phone' , enrol_number='$enroll_n' , date_of_admission='$date_a'  WHERE id=$id ");
+        header("Location:student.php");
+    } 
+?> <?php 
+        $id = $_GET['id'];
+ 
+        //selecting data associated with this particular id
+        $result = mysqli_query($conn, "SELECT * FROM students WHERE id=$id ");
+         
+        while($row = mysqli_fetch_array($result))
+        {
+            $name = $row['name'];
+            $email = $row['email'];
+            $phone = $row['phone'];
+            $enroll_n = $row['enrol_number'];
+            $date = $row['date_of_admission'];
+        }
+        ?>
+        
+    
+        
 
 <!DOCTYPE html>
 <html lang="en">
-
+ 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,53 +47,41 @@
 <body>
     <div class="vh-100 d-flex align-items-center">
         <div class="container h-80  w-50  " style="border-radius: 30px;">
-            <form method="POST">
-                <h2 class="text-center p-2 text-decoration-underline">Formullaire</h2>
+
+            <form method="POST" action="modifier.php">
+                <h2 class="text-center p-2 text-decoration-underline">modifier</h2>
                 <div class="mb-3">
                     <label class="form-label">Name</label>
-                    <input type="text" name="stud1" class="form-control border-2 border border-primary" value="<?php echo $row['stud1']; ?>">
+                    <input type="text" name="Nom" class="form-control border-2 border border-primary" value="<?php echo $name ?>">
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Email</label>
-                    <input type="text" name="stud2" class="form-control border-2 border border-primary" value="<?php echo $row['stud2']; ?>" >
+                    <input type="text" name="Email" class="form-control border-2 border border-primary" value="<?php echo $email?>" >
                 </div>
 
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">phone</label>
-                    <input type="text" name="stud3" class="form-control border-2 border border-primary" value="<?php echo $row['stud3']; ?>">
+                    <input type="text" name="Phone" class="form-control border-2 border border-primary" value="<?php echo $phone?>">
                 </div>
 
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Enrol</label>
-                    <input type="text" name="stud4" class="form-control border-2 border border-primary"value="<?php echo $row['stud4']; ?>">
+                    <input type="text" name="Enrol" class="form-control border-2 border border-primary"value="<?php echo $enroll_n?>">
                 </div>
 
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Date of admission</label>
-                    <input type="text" name="stud5" class="form-control border-2 border border-primary"value="<?php echo $row['stud5']; ?>">
+                    <input type="text" name="date" class="form-control border-2 border border-primary"value="<?php echo $date?>">
                 </div>
-                <div class="d-flex justify-content-center">
-                <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>">
+                <div class="d-flex justify-content-center">     
+                <button type="submit" name="Update" class="btn btn-primary">Submit</button>
                 </div>
+          
             </form>
-            <?php
-            if (isset($_POST['submit'])){
- 
-
-                $input = array(
-                    'stud1'=>$_POST['stud1'],
-                    'stud2'=>$_POST['stud2'],
-                    'stud3'=>$_POST['stud3'],
-                    'stud4'=>$_POST['stud4'],
-                    'stud5'=>$_POST['stud5'],
-               );
-               $data[$index] = $input;
-               $data=json_encode($data, JSON_PRETTY_PRINT);
-               file_put_contents('student.json',$data);
-               header('location:student.php');
-
-            }
-            ?>
+            
+            
+          
         </div>
     </div>
 
