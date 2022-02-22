@@ -1,31 +1,37 @@
 
 <?php 
+//  envoyé les  modification vers base  de donnés
         include 'conect.php';
-        if(isset($_POST['Update']))
-{       $id = $_POST['id'];
-        $name = $_POST['Nom'];
-        $email = $_POST['Email'];
-        $phone = $_POST['Phone'];
-        $enroll_n = $_POST['Enrol'];
-        $date_a = $_POST['date'];    
-        $result = mysqli_query($conn, "UPDATE students SET name='$name', email='$email', phone='$phone' , enrol_number='$enroll_n' , date_of_admission='$date_a'  WHERE id=$id ");
-        header("Location:student.php");
-    } 
-?> <?php 
-        $id = $_GET['id'];
- 
-        //selecting data associated with this particular id
-        $result = mysqli_query($conn, "SELECT * FROM students WHERE id=$id ");
-         
-        while($row = mysqli_fetch_array($result))
-        {
-            $name = $row['name'];
-            $email = $row['email'];
-            $phone = $row['phone'];
-            $enroll_n = $row['enrol_number'];
-            $date = $row['date_of_admission'];
+
+        if(isset($_GET['id'])) { 
+                        $id = $_GET['id'];
+                        //selecting data associated with this particular id
+                        $result = mysqli_query($conn, "SELECT * FROM students WHERE id=$id ");
+                        //   base de donnee ==> variables ==> form  
+                        $row = mysqli_fetch_array($result);   
+                        $id = $row['id'];
+                        $name = $row['name'];
+                        $email = $row['email'];
+                        $phone = $row['phone'];
+                        $enroll_n = $row['enrol_number'];
+                        $date = $row['date_of_admission'];
         }
-        ?>
+
+        if(isset($_POST['Update'])) {  
+                        //$_post des input de la form.
+                        //  form ==> variables  ==>  inserer ==> base de donnee
+                        $id = $_POST['id'];     // hidden 
+                        $name = $_POST['Nom'];
+                        $email = $_POST['Email'];
+                        $phone = $_POST['Phone'];
+                        $enroll_n = $_POST['Enrol'];
+                        $date_a = $_POST['date'];   
+                        $result = mysqli_query($conn, "UPDATE students SET name='$name', email='$email', phone='$phone' , enrol_number='$enroll_n' , date_of_admission='$date_a'  WHERE id=$id ");
+                        header("Location:student.php");
+        } 
+         
+            // afficher les info de la ligne qui on a séléctionné  dans  la form de modificatio
+?>
         
     
         
@@ -48,8 +54,10 @@
     <div class="vh-100 d-flex align-items-center">
         <div class="container h-80  w-50  " style="border-radius: 30px;">
 
-            <form method="POST" action="modifier.php">
+            <form method="POST" action="modifierstud.php">
                 <h2 class="text-center p-2 text-decoration-underline">modifier</h2>
+                <input type="text" name="id" value="<?php echo $id; ?>">
+
                 <div class="mb-3">
                     <label class="form-label">Name</label>
                     <input type="text" name="Nom" class="form-control border-2 border border-primary" value="<?php echo $name ?>">
@@ -73,7 +81,6 @@
                     <label for="exampleInputPassword1" class="form-label">Date of admission</label>
                     <input type="text" name="date" class="form-control border-2 border border-primary"value="<?php echo $date?>">
                 </div>
-                <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>">
                 <div class="d-flex justify-content-center">     
                 <button type="submit" name="Update" class="btn btn-primary">Submit</button>
                 </div>

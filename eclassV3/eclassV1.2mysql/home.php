@@ -1,4 +1,34 @@
-   <!doctype html>
+
+
+ <?php 
+         include 'conect.php';
+         $studen = mysqli_query($conn, "SELECT count(id) FROM students");
+         $asso = mysqli_fetch_array($studen);
+
+
+  
+  
+  
+         $cors = mysqli_query($conn, "SELECT count(id) FROM cours");
+         $corr = mysqli_fetch_array($cors);
+  
+  
+  
+         $paye= "SELECT sum(Amount_paid) FROM payements";
+         $sql=mysqli_query ($conn,$paye);
+         $payemt = mysqli_fetch_array($sql);
+  
+      
+    $home="active";
+    $course="";
+    $students="";
+    $payment="";
+    $reports="";
+    $settings="";
+
+  
+  ?>
+  <!doctype html>
    <html lang="en">
 
    <head>
@@ -11,7 +41,7 @@
        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 
        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-       <!-- <link rel="stylesheet" href="style.css"> -->
+       <link rel="stylesheet" href="Style.css">
        <title>home</title>
    </head>
 
@@ -29,7 +59,16 @@
 
                <nav class="navbar">
                 
-                   <?php include 'navbar.php'; ?>
+                   <?php include 'navbar.php';
+
+$home="active";
+$course="";
+$students="";
+$payment="";
+$reports="";
+$settings="";
+
+                    ?>
                </nav>
                <!-- <div class="container"> -->
                <div class="row gap-3">
@@ -39,7 +78,7 @@
                            <div class="card-body">
                                <i class="bi bi-mortarboard"></i>
                                <p class="">student</p>
-                               <p class="float-end"><span style="font-size: 25px;font-weight: bold;">342</span></p>
+                               <p class="float-end"><span style="font-size: 25px;font-weight: bold;"><?php echo $asso[0];?></span></p>
                            </div>
                        </div>
                    </div>
@@ -48,7 +87,7 @@
                            <div class="card-body">
                                <i class=" col-3 bi bi-bookmark "></i>
                                <p class="">cours</p>
-                               <p class="float-end"><span style="font-size: 25px;font-weight: bold;">342</span></p>
+                               <p class="float-end"><span style="font-size: 25px;font-weight: bold;"><?php echo $corr[0];?></span></p>
                            </div>
                        </div>
                    </div>
@@ -60,7 +99,7 @@
                                <p class="">payment</p>
                                <div class="d-flex align-items-center float-end">
                                    <h6>DHS</h6>
-                                   <p style="font-size: 25px;font-weight: bold;">556,000</p>
+                                   <p style="font-size: 25px;font-weight: bold;"><?php echo $payemt[0];?></p>
                                </div>
                            </div>
                        </div>

@@ -62,7 +62,7 @@ if (isset($_POST['save'])) {
     $date_of_admission = $_POST['date_of_admission'];
     $requete =("INSERT INTO students (name,email,phone,enrol_number,date_of_admission)
 	VALUES ('$name','$email','$phone','$enrol','$date_of_admission')");
-$query=mysqli_query($conn,$requete);
+    mysqli_query($conn,$requete);
     header('location:student.php');
 }
 ?>

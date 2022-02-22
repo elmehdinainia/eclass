@@ -1,4 +1,6 @@
-   <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0  " style="background-color: #FAFFC1;">
+  
+
+  <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0  " style="background-color: #FAFFC1;">
 
                 <div class="d-flex flex-column  align-items-center px-3 pt-2 text-white min-vh-100 ps-5">
                     <a href="deuxpage.html"
@@ -15,23 +17,23 @@
 
                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start "
                         id="menu">
-                        <li class="nav-item mt-3 mb-sm-2">
-                            <a href="home.php" class="nav-link active align-middle  text-dark">
+                        <li class="nav-item mt-3 mb-sm-2  <?php  echo  $home ; ?> ">
+                            <a href="home.php" class="nav-link  align-middle  text-dark">
                                 <i class="fal fa-home-lg-alt px-1 "></i> <span
-                                    class="ms-1 d-none d-sm-inline mt-4 ">Home</span>
+                                    class="ms-1 d-none d-sm-inline mt-4  ">Home</span>
                             </a>
                         </li>
-                        <li class="mb-sm-2">
-                            <a href="#" data-bs-toggle="collapse" class="nav-link   align-middle text-dark">
+                        <li class="mb-sm-2  <?php  echo  $course ; ?>">
+                            <a href="course.php" data-bs-toggle="collapse" class="nav-link   align-middle text-dark">
                                 <i class="far fa-bookmark px-1  "></i> <span
-                                    class="ms-1 d-none d-sm-inline">Course</span> </a>
+                                    class="ms-1 d-none d-sm-inline ">Course</span> </a>
                         </li>
-                        <li class="mb-sm-2">
+                        <li class="mb-sm-2 <?php  echo   $students ; ?>">
                             <a href="student.php" class="nav-link align-middle text-dark">
                                 <i class="fal fa-graduation-cap "></i> <span
                                     class="ms-1 d-none d-sm-inline">Students</span></a>
                         </li>
-                        <li class=" mb-sm-2">
+                        <li class=" mb-sm-2 <?php  echo   $payment ; ?>">
                             <a href="payment.php" data-bs-toggle="collapse"
                                 class="nav-link    align-middle text-dark ">
                                 <i class="far fa-usd-square "></i> <span
