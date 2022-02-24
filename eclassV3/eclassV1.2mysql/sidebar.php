@@ -1,5 +1,13 @@
   
 
+ <?php
+   if(isset($_POST['submit'])){
+       session_unset();
+       session_destroy();
+       header('location:index.php');
+   }
+
+ ?>
   <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0  " style="background-color: #FAFFC1;">
 
                 <div class="d-flex flex-column  align-items-center px-3 pt-2 text-white min-vh-100 ps-5">
@@ -11,7 +19,7 @@
                     <div class="d-flex flex-column align-items-center ">
                         <img src="./image/IMG_20191128_105704.jpg" alt="hugenerd" width="70" height="70"
                             class="rounded-circle  mt-1">
-                        <h4 class="text-dark mt-3 h6"> <b> Admin name </b></h4>
+                        <h4 class="text-dark mt-3 h6"> <b> <?php echo $_SESSION['name'] ; ?> </b></h4>
                         <p class="text-info">Admin</p>
                     </div>
 
@@ -51,9 +59,12 @@
                         </li>
 
                         <li class="position-absolute" style="bottom: 5px;">
-                            <a href="index.php" class="nav-link mt-sm-5  text-dark">
+                            <!-- <a href="index.php" class="nav-link mt-sm-5  text-dark">
                                 <span class="me-3 d-none d-sm-inline px-sm-1">Logout</span><i
-                                    class="fal fa-sign-out-alt fs-5 "></i></a>
+                                    class="fal fa-sign-out-alt fs-5 "></i></a> -->
+                                <form method="POST" action="">
+                                    <input type="submit" name="submit" value="Login" style="background:#0dcaf0;border-style: none;">
+                                </form>
                         </li>
                     </ul>
                 </div> 

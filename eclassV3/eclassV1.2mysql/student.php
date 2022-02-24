@@ -1,4 +1,5 @@
 <?php
+    include('session.php');
        $home="";
        $course="";
        $students="active";
@@ -10,11 +11,7 @@
         include 'conect.php';
 
 ?>
-<?php 
-session_start();
-if(isset($_SESSION['email'])){
-   
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -73,7 +70,7 @@ if(isset($_SESSION['email'])){
                 // Tableaux
 
                     $sql_re ="SELECT * FROM `students`";//$sql_re is a string
-                    $sql_obj = mysqli_query( $conn,$sql_re);//sql is a obj, take connection and requete
+                    $sql_obj = mysqli_query( $conn,$sql_re);//sql is RETURN a obj, take connection and requete
                     //$sql_assoc = mysqli_fetch_assoc($sql_obj);// mysqli_fetch_assoc this function takes a obj and convert to array associative 
                     //mysqli_num_rows this function return number all the rows
 
@@ -113,11 +110,7 @@ if(isset($_SESSION['email'])){
 
     </div>
     </div>
-    <?php 
-}
-else
-    header('Location:index.php');
-?>
+
 </body>
 
 </html>

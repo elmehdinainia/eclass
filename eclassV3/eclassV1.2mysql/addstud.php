@@ -1,4 +1,4 @@
-
+<?php  include_once('session.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,7 +53,7 @@
     </div>
     <?php
 
-if (isset($_POST['save'])) {
+if (isset($_POST['save'])) {  //determine si une variable declaré et non null 
     
     $name = $_POST['name'];
     $email = $_POST['email'];
@@ -62,8 +62,8 @@ if (isset($_POST['save'])) {
     $date_of_admission = $_POST['date_of_admission'];
     $requete =("INSERT INTO students (name,email,phone,enrol_number,date_of_admission)
 	VALUES ('$name','$email','$phone','$enrol','$date_of_admission')");
-    mysqli_query($conn,$requete);
-    header('location:student.php');
+    mysqli_query($conn,$requete);  //sayfatharequette lbase de donnée
+    header('location:student.php');   //deiger vers la page student 
 }
 ?>
 </body>

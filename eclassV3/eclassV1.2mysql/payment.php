@@ -1,4 +1,6 @@
 <?php
+ include_once('session.php');
+
 $home="";
 $course="";
 $students="";
@@ -16,7 +18,7 @@ $settings="";
 ?>
 
 <?php 
-session_start();
+
 if(isset($_SESSION['email'])){
    
 ?>

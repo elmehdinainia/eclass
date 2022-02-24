@@ -1,4 +1,7 @@
  <?php
+ 
+ include_once('session.php');
+
  $home="";
  $course="active";
  $students="";
@@ -6,11 +9,7 @@
  $reports="";
  $settings="";
  ?>
- <?php 
-session_start();
-if(isset($_SESSION['email'])){
-   
-?>
+
  <?php
         include 'conect.php';
         $sql ="SELECT * FROM `cours`";//$sql_re is a string
@@ -106,11 +105,9 @@ if(isset($_SESSION['email'])){
 
     </div>
     </div>
-    <?php 
-}
-else
-    header('Location:index.php');
-?>
+
+
+
 </body>
 
 </html>

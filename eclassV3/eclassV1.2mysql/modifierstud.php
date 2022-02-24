@@ -1,15 +1,16 @@
 
 <?php 
+ include_once('session.php');
 //  envoyé les  modification vers base  de donnés
         include 'conect.php';
 
-        if(isset($_GET['id'])) { 
+        if(isset($_GET['id'])) { //affichage
                         $id = $_GET['id'];
                         //selecting data associated with this particular id
                         $result = mysqli_query($conn, "SELECT * FROM students WHERE id=$id ");
                         //   base de donnee ==> variables ==> form  
                         $row = mysqli_fetch_array($result);   
-                        $id = $row['id'];
+                 
                         $name = $row['name'];
                         $email = $row['email'];
                         $phone = $row['phone'];
@@ -17,16 +18,18 @@
                         $date = $row['date_of_admission'];
         }
 
-        if(isset($_POST['Update'])) {  
+        if(isset($_POST['Update'])) {  //update
                         //$_post des input de la form.
                         //  form ==> variables  ==>  inserer ==> base de donnee
-                        $id = $_POST['id'];     // hidden 
+                     // hidden 
                         $name = $_POST['Nom'];
                         $email = $_POST['Email'];
                         $phone = $_POST['Phone'];
                         $enroll_n = $_POST['Enrol'];
-                        $date_a = $_POST['date'];   
-                        $result = mysqli_query($conn, "UPDATE students SET name='$name', email='$email', phone='$phone' , enrol_number='$enroll_n' , date_of_admission='$date_a'  WHERE id=$id ");
+                        $date_a = $_POST['date'];  
+                        $sql =  "UPDATE students SET name='$name', email='$email', phone='$phone' , enrol_number='$enroll_n' , date_of_admission='$date_a'  WHERE id='$id' ";
+                        $result = mysqli_query($conn, $sql);
+                        var_dump($result);
                         header("Location:student.php");
         } 
          
@@ -54,9 +57,9 @@
     <div class="vh-100 d-flex align-items-center">
         <div class="container h-80  w-50  " style="border-radius: 30px;">
 
-            <form method="POST" action="modifierstud.php">
+            <form method="POST" >
                 <h2 class="text-center p-2 text-decoration-underline">modifier</h2>
-                <input type="text" name="id" value="<?php echo $id; ?>">
+                <!-- <input type="text" name="id" value="<?php echo $id; ?>"> -->
 
                 <div class="mb-3">
                     <label class="form-label">Name</label>

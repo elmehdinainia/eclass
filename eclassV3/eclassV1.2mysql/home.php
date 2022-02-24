@@ -1,6 +1,8 @@
 
 
  <?php 
+include('session.php');
+
          include 'conect.php';
          $studen = mysqli_query($conn, "SELECT count(id) FROM students");
          $asso = mysqli_fetch_array($studen);

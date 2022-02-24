@@ -1,25 +1,28 @@
 <?php
-
+//  setcookie('email');
+//  setcookie('password');
 include 'conect.php';
 session_start();
-$query = "SELECT * FROM counts" ;
-$result = mysqli_query($conn , $query) ;
-$row = mysqli_fetch_assoc($result) ;
 
 if(isset($_POST['login'])){
-
+      $email = $_POST['email'];
+      $query = "SELECT * FROM counts WHERE Email = '$email'" ;
+      $result = mysqli_query($conn , $query) ;
+      $row = mysqli_fetch_assoc($result) ;
       if ($_POST['email'] == $row['Email']) {
       if ($_POST['password'] == $row['Password']){
-        $_SESSION['email'] = $row['Email'];
-        $_SESSION['password'] = $row['Password'];
+          $_SESSION['name'] = $row['Name'];
+          $_SESSION['email'] = $row['Email'];
+          $_SESSION['password'] = $row['Password'];
+        
         if(isset($_POST['remember'])){
-        setcookie('email', $_SESSION['email'] , time()+(3600*24),"/");
-        setcookie('password', $_SESSION['password'] , time()+(3600*24),"/");
+          setcookie('email', $row['Email'] , time()+10 , "/");
+          setcookie('password', $row['password'] , time()+10 , "/");
         }
 
 
 
-       header('location:home.php') ;
+      header('location:home.php') ;
 
 }
 else{
@@ -105,7 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") { //verifier le method get / post
 
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Email</label>
-        <input type="email" class="form-control" name="email" id="exampleInputEmail1" placeholder="entrer votre password" value="<?php if (isset($_COOKIE['email'])) echo $_COOKIE['email'] ?> ">
+        <input type="email" class="form-control" name="email" id="exampleInputEmail1" placeholder="entrer votre password" value="<?php if(isset($_COOKIE['email'])) echo $_COOKIE['email']?> ">
         <?php  if(isset($_POST['email'])){?>
         <span class="text-danger"><?php echo  $email_error     ?>
       </span>
