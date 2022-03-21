@@ -2,9 +2,12 @@
 
  <?php 
 include('session.php');
+/*
+bi nisba ila zadty cours ital3o lik f cart li flhom plus ila zadty flos hta homa itzado f carts
+*/
 
          include 'conect.php';
-         $studen = mysqli_query($conn, "SELECT count(id) FROM students");
+         $studen = mysqli_query($conn, "SELECT count(id) FROM student");
          $asso = mysqli_fetch_array($studen);
 
 
@@ -20,7 +23,7 @@ include('session.php');
          $sql=mysqli_query ($conn,$paye);
          $payemt = mysqli_fetch_array($sql);
   
-      
+      //nil nisbatila bghity thovre 3la les button
     $home="active";
     $course="";
     $students="";
@@ -28,8 +31,8 @@ include('session.php');
     $reports="";
     $settings="";
 
-  
-  ?>
+    ?>
+    
   <!doctype html>
    <html lang="en">
 

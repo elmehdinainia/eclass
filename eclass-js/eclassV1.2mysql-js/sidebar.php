@@ -17,7 +17,7 @@
                         <h3 class=" fw-bolder text-dark  ps-2   ">E-classe</h3>
                     </a>
                     <div class="d-flex flex-column align-items-center ">
-                        <img src="./image/IMG_20191128_105704.jpg" alt="hugenerd" width="70" height="70"
+                        <img src="./image/High_resolution_wallpaper_background_ID_77700172116.jpg" alt="hugenerd" width="70" height="70"
                             class="rounded-circle  mt-1">
                         <h4 class="text-dark mt-3 h6"> <b> <?php echo $_SESSION['name'] ; ?> </b></h4>
                         <p class="text-info">Admin</p>
@@ -32,7 +32,7 @@
                             </a>
                         </li>
                         <li class="mb-sm-2  <?php  echo  $course ; ?>">
-                            <a href="course.php" data-bs-toggle="collapse" class="nav-link   align-middle text-dark">
+                            <a href="course.php" class="nav-link   align-middle text-dark">
                                 <i class="far fa-bookmark px-1  "></i> <span
                                     class="ms-1 d-none d-sm-inline ">Course</span> </a>
                         </li>
@@ -42,10 +42,11 @@
                                     class="ms-1 d-none d-sm-inline">Students</span></a>
                         </li>
                         <li class=" mb-sm-2 <?php  echo   $payment ; ?>">
-                            <a href="payment.php" data-bs-toggle="collapse"
+                            <a href="payment.php" 
                                 class="nav-link    align-middle text-dark ">
                                 <i class="far fa-usd-square "></i> <span
-                                    class="ms-1 d-none d-sm-inline">Payment</span></a>
+                                    class="ms-1 d-none d-sm-inline">Payment</span>
+                                </a>
                         </li>
                         <li class="mb-sm-2">
                             <a href="#" data-bs-toggle="collapse" class="nav-link bg align-middle text-dark ">

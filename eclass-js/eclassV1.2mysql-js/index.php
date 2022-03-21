@@ -5,35 +5,31 @@ include 'conect.php';
 session_start();
 
 if(isset($_POST['login'])){
+
       $email = $_POST['email'];
-      $query = "SELECT * FROM counts WHERE Email = '$email'" ;
+      $password =$_POST['password'];
+      $query = "SELECT * FROM counts WHERE Email = '$email' AND Password = '$password'" ;//ila kan email dyal count f data egal email
       $result = mysqli_query($conn , $query) ;
       $row = mysqli_fetch_assoc($result) ;
-      if ($_POST['email'] == $row['Email']) {
-      if ($_POST['password'] == $row['Password']){
-          $_SESSION['name'] = $row['Name'];
-          $_SESSION['email'] = $row['Email'];
-          $_SESSION['password'] = $row['Password'];
+      $nbrligne = mysqli_num_rows($result);
+      if($nbrligne==1){
+        $_SESSION['name'] = $row['Name'];
+         $_SESSION['email'] = $row['Email'];
+         $_SESSION['password'] = $row['Password'];
+        header('location:home.php');
+      }
+     
+
+     
+         
         
         if(isset($_POST['remember'])){
           setcookie('email', $row['Email'] , time()+10 , "/");
           setcookie('password', $row['password'] , time()+10 , "/");
         }
-
-
-
-      header('location:home.php') ;
-
-}
-else{
-  $error = 'password incorrect' ;
-}
-}
-else {
-$error = 'email and password est incorrect' ;
 }
 
-}
+
 
 
 
@@ -55,9 +51,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") { //verifier le method get / post
 
     }
         function validatinput($data){ 
-        $data=htmlspecialchars($data);
-        $data=trim($data);
-        $data=stripslashes($data);
+        $data=htmlspecialchars($data);  //taykhalih may9rach code html
+        $data=trim($data);   //delet  les espace  kbir
+        $data=stripslashes($data); // delet slash /
         return $data;
         }
               //validation email
@@ -75,6 +71,15 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") { //verifier le method get / post
                 if (empty($_POST['Password'])) {
                   $password_error = "please enter your password";
                 }
+                if (empty($_POST['Email']) || empty($_POST['Password'])) {
+                  $email_error = "please enter your email"; 
+                  $password_error = "please enter your password";
+                  // header('location:home.php') ;
+                  
+                }
+
+
+
 
 ?>
 
@@ -109,7 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") { //verifier le method get / post
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Email</label>
         <input type="email" class="form-control" name="email" id="exampleInputEmail1" placeholder="entrer votre password" value="<?php if(isset($_COOKIE['email'])) echo $_COOKIE['email']?> ">
-        <?php  if(isset($_POST['email'])){?>
+        <?php  if(empty($_POST['email'])){?>
         <span class="text-danger"><?php echo  $email_error     ?>
       </span>
       <?php } ?>
@@ -121,18 +126,19 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") { //verifier le method get / post
       <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Password</label>
         <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="entrer votre email"value="<?php if (isset($_COOKIE['password'])) echo $_COOKIE['password'] ?>">
-        <?php  if(isset($_POST['password'])){?>
+        <?php  if(empty($_POST['password'])){?>
         <span class="text-danger"><?php echo  $password_error ?></span>
         <?php }?>
       </div>
 
 
 
-      <input type="submit" name="login" class="btn btn-primary w-100 fw-bold te"> </input>
+      <input type="submit" name="login" class="btn btn-primary w-100 fw-bold"> </input>
       <p class="text-center my-3">forget your password? <span class="btn-link"> reset password </span></p>
       <input class="form-check-input me-1" type="checkbox" name="remember" value="" aria-label="...">
-        remamber me
+      <span>remamber me</span>
 
+        <a  class="btn btn-primary" href="signup.php" name ="create">Create account</a>
     </form>
   </div>
 </body>

@@ -53,10 +53,12 @@
                     <div class="tof">
                         <i class="far fa-sort"></i>
                     </div>
-                    <a href="addcors.php" type="button" class="btn btn-primary">add new course</a>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    add new student
+                </button>
                 </div>
             </div>
-            <div class="table-responsive" style="background:#adb5bd">
+            <div class="table-responsive">
                 <table class="table student_list table-borderless">
                     <thead>
                         <tr class="align-middle t-rows">
@@ -77,7 +79,7 @@
                    ?>
                 
                            <tr class="bg-white align-middle">
-                            <td><img src="image/images.jfif" alt="" height="50" width="50" class="rounded-circle"></td>
+                            <td><img src="image/student.jpg" alt="" height="50" width="50" class="rounded-circle"></td>
                             <td><?php echo $row['Name'] ?></td>
                             <td><?php echo $row['Type'] ?></td>
                             <td><?php echo $row['Prix'] ?></td>
@@ -105,8 +107,42 @@
 
     </div>
     </div>
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
 
+      <div class="modal-body">
+    <form method="POST">
+                <h2 class="text-center p-2 text-decoration-underline">Formullaire Course</h2>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Name</label>
+                    <input type="text" name="name" class="form-control border-2 border border-primary" id="exampleInputPassword1" >
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">type</label>
+                    <input type="text" name="type" class="form-control border-2 border border-primary " id="exampleInputPassword1" >
+                </div>
 
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">prix</label>
+                    <input type="text" name="prix" class="form-control border-2 border border-primary" id="exampleInputPassword1" >
+                </div>
+
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">durer</label>
+                    <input type="text" name="durer" class="form-control border-2 border border-primary" id="exampleInputPassword1">
+                </div>
+                <input type="hidden" name="id">
+                <div class="d-flex justify-content-center">
+                    <!-- <button type="submit" name="save" >Submit</button> -->
+                    <input type="submit" name="save" class="btn btn-primary">
+                </div>
+            </form>
+
+                    </div>
+                    </div>
+                    </div>
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 </body>
 
